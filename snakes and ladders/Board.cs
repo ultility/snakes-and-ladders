@@ -105,6 +105,7 @@ namespace snakes_and_ladders
                     }
                     b.SetMessage("Congrats " + winner);
                     b.SetPositiveButton("Ok", ok);
+                    b.SetCancelable(false);
                     d = b.Create();
                 }
 
@@ -134,9 +135,23 @@ namespace snakes_and_ladders
         }
         private void ok(Object sender, EventArgs e)
         {
-            Intent i = new Intent(Context, typeof(MainActivity));
-            i.PutExtra("winner", turn);
-            ((Activity1)Context).StartActivity(i);
+            if (turn == 0)
+            {
+                MainActivity.red++;
+            }
+            else if (turn == 1)
+            {
+                MainActivity.blue++;
+            }
+            else if (turn == 2)
+            {
+                MainActivity.green++;
+            }
+            else if (turn == 3)
+            {
+                MainActivity.purple++;
+            }
+            ((Activity1)Context).Finish();
         }
     }
 }
